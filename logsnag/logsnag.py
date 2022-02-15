@@ -9,7 +9,8 @@ class LogSnag:
     """LogSnag API Client"""
 
     def __init__(self, token: str):
-        """Initialize a new instance of LogSnag
+        """
+        Initialize a new instance of LogSnag
         :param token: API Token
         """
         self._token = token
@@ -31,7 +32,8 @@ class LogSnag:
             icon: str = None,
             notify: bool = False
     ):
-        """Publish a new log to LogSnag
+        """
+        Publish a new log to LogSnag
         :param project: project name
         :param channel: channel name
         :param event: event title
