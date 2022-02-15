@@ -39,7 +39,6 @@ class LogSnag:
         :param icon: optional event icon (must be a single emoji)
         :param notify: notify via push notifications
         """
-
         response = self._session.post(LOGSNAG_ENDPOINT, json={
             "project": project,
             "channel": channel,
