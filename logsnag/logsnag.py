@@ -40,6 +40,8 @@ class LogSnag:
         :param description: optional event description
         :param icon: optional event icon (must be a single emoji)
         :param notify: notify via push notifications
+        :raises:
+            FailedToPublish: if failed to publish
         """
         response = self._session.post(LOGSNAG_ENDPOINT, json={
             "project": project,
