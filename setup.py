@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="logsnag",
-    version='0.0.2',
+    version='0.0.3',
     description="LogSnag API Wrapper",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -14,6 +14,7 @@ setup(
         'Homepage': 'https://logsnag.com',
         'Documentation': 'https://docs.logsnag.com',
         'Playground': 'https://logsnag.com/plyground',
+        'Github': 'https://github.com/LogSnag/logsnag.py'
     },
     url="https://github.com/logsnag/logsnag.py",
     author="Shayan Taslim",
