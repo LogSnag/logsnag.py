@@ -13,7 +13,7 @@ setup(
     project_urls={
         'Homepage': 'https://logsnag.com',
         'Documentation': 'https://docs.logsnag.com',
-        'Playground': 'https://logsnag.com/plyground',
+        'Playground': 'https://logsnag.com/playground',
         'Github': 'https://github.com/LogSnag/logsnag.py'
     },
     url="https://github.com/logsnag/logsnag.py",
