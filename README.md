@@ -27,18 +27,21 @@ from logsnag import LogSnag
 ### Initialize Client
 
 ```python
-logsnag = LogSnag('7f568d735724351757637b1dbf108e5')
+logsnag = LogSnag('7f568d735724351757637b1dbf108e5', "my-saas")
 ```
 
 ### Publish Event
 
 ```python
 logsnag.publish(
-    project="my-saas",
     channel="waitlist",
     event="User Joined",
     description="Email: john@doe.com",
     icon="🎉",
+    tags={
+      "email": "john@doe.com",
+      "user-id": "uid-12"  
+    },
     notify=True
 )
 ```
