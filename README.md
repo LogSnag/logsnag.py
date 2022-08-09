@@ -46,3 +46,12 @@ logsnag.publish(
 )
 ```
 
+### Publish Insight
+
+```python
+logsnag.insight(
+    title='User Count',
+    value=100,
+    icon='👨',
+)
+```

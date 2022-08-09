@@ -1,8 +1,9 @@
 """ LogSnag Client Implementation """
 import requests
-from logsnag.constants import LOGSNAG_ENDPOINT
+from logsnag.constants import ENDPOINTS
 from logsnag.exceptions import FailedToPublish
 from logsnag.utils import create_authorization_header
+from typing import Union
 
 
 class LogSnag:
@@ -62,7 +63,37 @@ class LogSnag:
 
         # drop none values from json body
         data = {k: v for k, v in data.items() if v is not None}
-        response = self._session.post(LOGSNAG_ENDPOINT, json=data)
+        response = self._session.post(ENDPOINTS.LOG, json=data)
 
         if not 200 <= response.status_code < 300:
+            raise FailedToPublish()
+
+    def insight(
+            self,
+            title: str,
+            value: Union[int, float, str],
+            icon: str = None,
+    ):
+        """
+        Publish a new insight to LogSnag
+        :param title: insight title
+        :param value: insight value
+        :param icon: optional event icon (must be a single emoji)
+        :raises:
+            FailedToPublish: if failed to publish
+        """
+
+        data = {
+            "project": self.get_project(),
+            "title": title,
+            "value": value,
+            "icon": icon
+        }
+
+        # drop none values from json body
+        data = {k: v for k, v in data.items() if v is not None}
+        response = self._session.post(ENDPOINTS.INSIGHT, json=data)
+
+        if not 200 <= response.status_code < 300:
+            print(response.text)
             raise FailedToPublish()
