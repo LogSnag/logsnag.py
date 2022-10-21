@@ -27,7 +27,7 @@ from logsnag import LogSnag
 ### Initialize Client
 
 ```python
-logsnag = LogSnag('7f568d735724351757637b1dbf108e5', "my-saas")
+logsnag = LogSnag(token='7f568d735724351757637b1dbf108e5', project="my-saas")
 ```
 
 ### Publish Event
