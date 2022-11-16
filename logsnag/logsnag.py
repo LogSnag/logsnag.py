@@ -37,7 +37,8 @@ class LogSnag:
             description: str = None,
             icon: str = None,
             tags: dict = None,
-            notify: bool = False
+            notify: bool = False,
+            parser: str = None
     ):
         """
         Publish a new log to LogSnag
@@ -47,6 +48,7 @@ class LogSnag:
         :param icon: optional event icon (must be a single emoji)
         :param tags: optional dictionary of tags
         :param notify: notify via push notifications
+        :param parser: optional parser for description (markdown or text)
         :raises:
             FailedToPublish: if failed to publish
         """
@@ -58,7 +60,8 @@ class LogSnag:
             "description": description,
             "icon": icon,
             "tags": tags,
-            "notify": notify
+            "notify": notify,
+            "parser": parser
         }
 
         # drop none values from json body
