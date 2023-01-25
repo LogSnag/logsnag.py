@@ -4,6 +4,7 @@ from logsnag.constants import ENDPOINTS
 from logsnag.exceptions import FailedToPublish
 from logsnag.utils import create_authorization_header
 from typing import Union
+from datetime import datetime
 
 
 class LogSnag:
@@ -38,7 +39,8 @@ class LogSnag:
             icon: str = None,
             tags: dict = None,
             notify: bool = False,
-            parser: str = None
+            parser: str = None,
+            date: datetime = None
     ):
         """
         Publish a new log to LogSnag
@@ -49,9 +51,15 @@ class LogSnag:
         :param tags: optional dictionary of tags
         :param notify: notify via push notifications
         :param parser: optional parser for description (markdown or text)
+        :param date: optional datetime for historical logs
         :raises:
             FailedToPublish: if failed to publish
         """
+
+        timestamp = None
+        if date:
+            # convert timestamp to unix timestamp
+            timestamp = date.timestamp()
 
         data = {
             "project": self.get_project(),
@@ -61,7 +69,8 @@ class LogSnag:
             "icon": icon,
             "tags": tags,
             "notify": notify,
-            "parser": parser
+            "parser": parser,
+            "timestamp": timestamp
         }
 
         # drop none values from json body
