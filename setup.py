@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="logsnag",
-    version='0.1.4',
+    version='1.0.0b1',
     description="LogSnag API Wrapper",
     long_description=README,
     long_description_content_type="text/markdown",
