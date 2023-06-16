@@ -63,5 +63,6 @@ logsnag.insight(
     title='User Count',
     value={'$inc': 1},
     icon='👨',
+    mutate=True
 )
 ```
