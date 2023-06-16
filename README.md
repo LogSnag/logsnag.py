@@ -55,3 +55,13 @@ logsnag.insight(
     icon='👨',
 )
 ```
+
+### Publish Insight with mutation (beta)
+
+```python
+logsnag.insight(
+    title='User Count',
+    value={'$inc': 1},
+    icon='👨',
+)
+```
