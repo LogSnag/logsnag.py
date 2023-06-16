@@ -78,7 +78,10 @@ class LogSnag:
         response = self._session.post(ENDPOINTS.LOG, json=data)
 
         if not 200 <= response.status_code < 300:
-            raise FailedToPublish()
+            raise FailedToPublish(
+                msg=response.json().get('message', 'Failed to publish log'),
+                data=response.json()
+            )
 
     def insight(
             self,
@@ -107,5 +110,7 @@ class LogSnag:
         response = self._session.post(ENDPOINTS.INSIGHT, json=data)
 
         if not 200 <= response.status_code < 300:
-            print(response.text)
-            raise FailedToPublish()
+            raise FailedToPublish(
+                msg=response.json().get('message', 'Failed to publish insight'),
+                data=response.json()
+            )
