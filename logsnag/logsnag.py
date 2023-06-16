@@ -88,12 +88,15 @@ class LogSnag:
             title: str,
             value: Union[int, float, str],
             icon: str = None,
+            mutate: bool = False
+
     ):
         """
         Publish a new insight to LogSnag
         :param title: insight title
         :param value: insight value
         :param icon: optional event icon (must be a single emoji)
+        :param mutate: if triggered enables mutations for the insight value
         :raises:
             FailedToPublish: if failed to publish
         """
@@ -107,7 +110,8 @@ class LogSnag:
 
         # drop none values from json body
         data = {k: v for k, v in data.items() if v is not None}
-        response = self._session.post(ENDPOINTS.INSIGHT, json=data)
+        request_methods = {False: self._session.post, True: self._session.patch}
+        response = request_methods[mutate](ENDPOINTS.INSIGHT, json=data)
 
         if not 200 <= response.status_code < 300:
             raise FailedToPublish(
