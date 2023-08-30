@@ -33,25 +33,61 @@ logsnag = LogSnag(token='7f568d735724351757637b1dbf108e5', project="my-saas")
 ### Publish Event
 
 ```python
-logsnag.publish(
+logsnag.track(
     channel="waitlist",
     event="User Joined",
+    user_id="user_123",
     description="Email: john@doe.com",
     icon="🎉",
     tags={
-      "email": "john@doe.com",
-      "user-id": "uid-12"  
+      "source": "google",
     },
     notify=True
 )
 ```
 
+### User Properties
+
+```python
+logsnag.identify(
+    user_id="user_123",
+    properties={
+        "name": "John Doe",
+        "email": "john@doe.com",
+        "plan": "free",
+    }
+)
+```
+
+### Group Properties
+
+```python
+logsnag.group(
+    user_id="user_123",
+    group_id="group_123",
+    properties={
+        "name": "ACME Inc.",
+        "plan": "enterprise",
+        "fund": "Series A",
+    }
+)
+
 ### Publish Insight
 
 ```python
-logsnag.insight(
+logsnag.insight.track(
     title='User Count',
     value=100,
+    icon='👨',
+)
+```
+
+### Increment Insight
+
+```python
+logsnag.insight.increment(
+    title='User Count',
+    value=1,
     icon='👨',
 )
 ```
