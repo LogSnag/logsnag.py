@@ -71,6 +71,7 @@ logsnag.group(
         "fund": "Series A",
     }
 )
+```
 
 ### Publish Insight
 
